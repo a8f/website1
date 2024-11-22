@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  color: #fff;
+}
+
+.centered-text {
+  position: relative;
+  z-index: 1; /* Keep text below the static */
+  font-size: 8rem;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  animation: breathing-effect 5s ease-in-out infinite; /* Breathing effect */
+}
+
+@keyframes breathing-effect {
+  0%, 100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.static-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzM1ZGhxaXZ3aW5xd3dsdDVqOXR5c3NueW56ZXdkNjA5bzB3cmgxdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/OVlFjmEDhx9rG/giphy.webp') repeat;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 2; /* Ensure static is above the text */
+  animation: static-animation 2s steps(10) infinite;
+}
+
+@keyframes static-animation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+.link {
+	color: white;
+	text-decoration: none;
+}
