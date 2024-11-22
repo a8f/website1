@@ -10,9 +10,52 @@
 <body>
   <div class="static-overlay"></div>
   <div class="centered-text">
-    <a class="link" onclick="window.location.href = 'https://www.youtube.com/watch?v=XK1_jT3T4sw&t=31s'">
+    <a class="link">
       <h1>691</h1>
     </a>
   </div>
+
+  <!-- Invisible iframe for YouTube video -->
+  <iframe id="player" width="0" height="0" src="https://www.youtube.com/embed/XK1_jT3T4sw?autoplay=1&start=31&enablejsapi=1" frameborder="0" allow="autoplay" style="display:none;"></iframe>
+
+  <script>
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        events: {
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    // This function will handle the video state changes
+    function onPlayerStateChange(event) {
+      if (event.data == YT.PlayerState.PLAYING) {
+        // Continuously check the playback time during video playback
+        checkLoop();
+      }
+    }
+
+    function checkLoop() {
+      var currentTime = player.getCurrentTime(); // Get the current playback time
+      if (currentTime >= 77) { // 1 minute 16 seconds is 76 seconds
+        player.seekTo(31); // Seek back to 31 seconds
+        player.playVideo();  // Continue playing after seeking
+      }
+      // Repeat this check every 100ms
+      setTimeout(checkLoop, 100);
+    }
+
+    // Wait for the YouTube API to load
+    document.querySelector('.link').addEventListener('click', function() {
+      player.playVideo(); // Play the video when clicked
+    });
+
+    // Load the YouTube Iframe API script dynamically
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  </script>
 </body>
 </html>
