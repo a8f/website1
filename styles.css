@@ -17,15 +17,25 @@ body {
   font-size: 8rem;
   color: #fff;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  animation: breathing-effect 5s ease-in-out infinite; /* Breathing effect */
+  animation: floating-effect 5s ease-in-out infinite; /* Floating effect */
 }
 
-@keyframes breathing-effect {
+@keyframes floating-effect {
   0%, 100% {
     opacity: 0.1;
+    transform: translateY(0);
+  }
+  25% {
+    opacity: 0.3;
+    transform: translateY(-10px); /* Move up slightly */
   }
   50% {
     opacity: 0.5;
+    transform: translateY(0); /* Back to original position */
+  }
+  75% {
+    opacity: 0.3;
+    transform: translateY(10px); /* Move down slightly */
   }
 }
 
@@ -52,7 +62,7 @@ body {
 }
 
 .link {
-	color: white;
-	text-decoration: none;
-	cursor: pointer;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
 }
