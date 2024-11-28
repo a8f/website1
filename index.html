@@ -16,7 +16,9 @@
   </div>
 
   <!-- Invisible iframe for YouTube video -->
-  <iframe id="player" width="0" height="0" src="https://www.youtube.com/embed/XK1_jT3T4sw?autoplay=1&start=31&enablejsapi=1" frameborder="0" allow="autoplay" style="display:none;"></iframe>
+  <iframe id="player" width="0" height="0" 
+          src="https://www.youtube.com/embed/2DvjtBlJkR0?autoplay=1&start=25&enablejsapi=1" 
+          frameborder="0" allow="autoplay" style="display:none;"></iframe>
 
   <script>
     var player;
@@ -38,8 +40,8 @@
 
     function checkLoop() {
       var currentTime = player.getCurrentTime(); // Get the current playback time
-      if (currentTime >= 77) { // 1 minute 16 seconds is 76 seconds
-        player.seekTo(31); // Seek back to 31 seconds
+      if (currentTime >= 159) { // total video duration 
+        player.seekTo(25); // Seek back to 24 seconds
         player.playVideo();  // Continue playing after seeking
       }
       // Repeat this check every 100ms
